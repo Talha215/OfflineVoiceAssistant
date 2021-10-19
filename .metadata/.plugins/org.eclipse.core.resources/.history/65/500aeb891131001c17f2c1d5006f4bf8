@@ -1,0 +1,33 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner input = null;
+		String output = null;
+		
+		do {
+			try {
+				input = new Scanner(new BufferedReader(new FileReader("C:/Users/bmw21/Desktop/test.txt")));
+				
+				output = "";
+				while(input.hasNext()) {
+					output += input.nextLine() + '\n';
+				}
+				System.out.println("FOUND: " + output);
+				File toDelete = new File("C:/Users/bmw21/Desktop/test.txt");
+				System.out.println(toDelete.delete());
+				
+			} catch(FileNotFoundException e ) {
+				
+			} finally {
+				if(input != null) {
+					input.close();
+				}
+			}
+		} while(output == null);
+	}
+}
