@@ -104,7 +104,6 @@ public class system {
 			system.textToSpeech.setVoice("dfki-poppy-hsmm");
 			system.textToSpeech.speak(run.outPut(run.match()), 1.5f, false, true);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
