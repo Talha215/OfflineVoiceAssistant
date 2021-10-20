@@ -103,7 +103,7 @@ class PorcupineDemo(Thread):
                     self._recorded_frames.append(pcm)
 
                 result = porcupine.process(pcm)
-                string = 'what\'s the date'
+                string = 'what\'s the time'
                 if result >= 0:
                     with open("../test.txt", "w") as f:
                         f.write(string)
