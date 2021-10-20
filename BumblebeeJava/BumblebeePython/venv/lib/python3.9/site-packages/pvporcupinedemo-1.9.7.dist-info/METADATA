@@ -1,0 +1,179 @@
+Metadata-Version: 2.1
+Name: pvporcupinedemo
+Version: 1.9.7
+Summary: Porcupine wake word engine demos
+Home-page: https://github.com/Picovoice/porcupine
+Author: Picovoice
+Author-email: hello@picovoice.ai
+License: UNKNOWN
+Keywords: wake word engine,hotword detection,keyword spotting,wake word detection,voice commands
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Topic :: Multimedia :: Sound/Audio :: Speech
+Requires-Python: >=3
+Description-Content-Type: text/markdown
+Requires-Dist: enum34
+Requires-Dist: numpy
+Requires-Dist: pvporcupine (==1.9.5)
+Requires-Dist: pvrecorder (==1.0.0)
+Requires-Dist: soundfile
+
+# Porcupine Wake Word Engine Demos
+
+Made in Vancouver, Canada by [Picovoice](https://picovoice.ai)
+
+This package contains demos and commandline utilities for processing real-time audio (i.e. microphone) and audio files
+using Porcupine wake word engine.
+
+## Porcupine
+
+Porcupine is a highly-accurate and lightweight wake word engine. It enables building always-listening voice-enabled
+applications. It is
+
+- using deep neural networks trained in real-world environments.
+- compact and computationally-efficient making it perfect for IoT.
+- scalable. It can detect multiple always-listening voice commands with no added CPU/memory footprint.
+- self-service. Developers can train custom wake phrases using [Picovoice Console](https://picovoice.ai/console/).
+
+## Compatibility
+
+- Python 3
+- Runs on Linux (x86_64), Mac (x86_64), Windows (x86_64), Raspberry Pi (all variants), NVIDIA Jetson (Nano), and BeagleBone.
+
+## Installation
+
+```console
+sudo pip3 install pvporcupinedemo
+```
+
+## Usage
+
+### Microphone Demo
+
+It opens an audio stream from a microphone and detects utterances of a given wake word. The following opens the default
+microphone and detects occurrences of "Picovoice".
+
+```console
+porcupine_demo_mic --keywords picovoice
+```
+
+`keywords` is a shorthand for using default keyword files shipped with the package. The list of default keyword files
+can be seen in the usage string
+
+```console
+porcupine_demo_mic --help
+```
+
+To detect multiple phrases concurrently provide them as separate arguments
+
+```console
+porcupine_demo_mic --keywords picovoice porcupine
+```
+
+To detect non-default keywords (e.g. models created using [Picovoice Console](https://picovoice.ai/console/))
+use `keyword_paths` argument
+
+```console
+porcupine_demo_mic --keyword_paths ${KEYWORD_PATH_ONE} ${KEYWORD_PATH_TWO}
+```
+
+To detect non-English keywords provide the respective model path:
+
+```console
+porcupine_demo_mic --model_path ${NON_ENGLISH_MODEL_PATH} --keyword_paths ${NON_ENGLISH_KEYWORD_PATH} 
+```
+
+The model files for all supported languages are available 
+[here](https://github.com/Picovoice/porcupine/tree/master/lib/common) on Porcupine's GitHub repository.
+
+It is possible that the default audio input device recognized by PyAudio is not the one being used. There are a couple
+of debugging facilities baked into the demo application to solve this. First, type the following into the console
+
+```console
+porcupine_demo_mic --show_audio_devices
+```
+
+It provides information about various audio input devices on the box. On a Linux box, this is the console output
+
+```
+index: 0, device name: Monitor of sof-hda-dsp HDMI3/DP3 Output
+index: 1, device name: Monitor of sof-hda-dsp HDMI2/DP2 Output
+index: 2, device name: Monitor of sof-hda-dsp HDMI1/DP1 Output
+index: 3, device name: Monitor of sof-hda-dsp Speaker + Headphones
+index: 4, device name: sof-hda-dsp Headset Mono Microphone + Headphones Stereo Microphone
+index: 5, device name: sof-hda-dsp Digital Microphone
+``` 
+
+If you would like to use the default device, leave `audio_device_index` empty, else select the device index from the
+output above. In this example we will use the device at index 5.
+
+```console
+porcupine_demo_mic --keywords picovoice --audio_device_index 5
+```
+
+If the problem persists we suggest storing the recorded audio into a file for inspection. This can be achieved by
+
+```console
+porcupine_demo_mic --keywords picovoice --audio_device_index 5 --output_path ~/test.wav
+```
+
+If after listening to stored file there is no apparent problem detected please open an issue.
+
+### File Demo
+
+It allows testing Porcupine on a corpus of audio files. The demo is mainly useful for quantitative performance
+benchmarking. It accepts 16kHz audio files. Porcupine processes a single-channel audio stream if a stereo file is
+provided it only processes the first (left) channel. The following processes a file looking for instances of the phrase
+"Picovoice"
+
+```console
+porcupine_demo_file --input_audio_path ${AUDIO_PATH} --keywords picovoice
+```
+
+`keywords` is a shorthand for using default keyword files shipped with the package. The list of default keyword files
+can be seen in the usage string
+
+```console
+porcupine_demo_file --help
+```
+
+To detect multiple phrases concurrently provide them as separate arguments
+
+```console
+porcupine_demo_file --input_audio_path ${AUDIO_PATH} --keywords grasshopper porcupine
+```
+
+To detect non-default keywords (e.g. models created using [Picovoice Console](https://picovoice.ai/console/))
+use `keyword_paths` argument
+
+```console
+porcupine_demo_file --input_audio_path ${AUDIO_PATH} \
+--keyword_paths ${KEYWORD_PATH_ONE} ${KEYWORD_PATH_TWO}
+```
+
+To detect non-English keywords provide the respective model path:
+
+```console
+porcupine_demo_mic --input_audio_path ${AUDIO_PATH} \
+--model_path ${NON_ENGLISH_MODEL_PATH} \
+--keyword_paths ${NON_ENGLISH_KEYWORD_PATH} 
+```
+
+The model files for all supported languages are available 
+[here](https://github.com/Picovoice/porcupine/tree/master/lib/common) on Porcupine's GitHub repository.
+
+The sensitivity of the engine can be tuned per keyword using the `sensitivities` input argument
+
+```console
+porcupine_demo_file --input_audio_path ${AUDIO_PATH} \
+--keywords grasshopper porcupine --sensitivities 0.3 0.6
+```
+
+Sensitivity is the parameter that enables trading miss rate for the false alarm rate. It is a floating point number within
+`[0, 1]`. A higher sensitivity reduces the miss rate at the cost of increased false alarm rate.
+
+
