@@ -4,7 +4,7 @@ import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Main {
+public class MainTalha {
 	public static void main(String[] args) throws InterruptedException {
 		Scanner input = null;
 		String output = null;

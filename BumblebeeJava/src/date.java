@@ -3,14 +3,18 @@ import java.util.ArrayList;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-public class date implements command{
-    public void initialize(){
-        commandPhrases.add("date");
+public class date extends commandClass implements commandInterface {
+	ArrayList<String> commandPhrases = new ArrayList<String>();
+	
+	public date() {
+    	commandPhrases.add("date");
     }
-    public boolean isFound(String word){
+		
+    public boolean match(String word){
         return commandPhrases.contains(word);
     }
-    public static String run(ArrayList<String> input){
+    
+    public String run(String[] input){
         DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
         LocalDateTime now = LocalDateTime.now();
         return ("today is " + dtf.format(now));

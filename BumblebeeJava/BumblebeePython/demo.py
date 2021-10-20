@@ -68,7 +68,6 @@ class PorcupineDemo(Thread):
          Creates an input audio stream, instantiates an instance of Porcupine object, and monitors the audio stream for
          occurrences of the wake word(s). It prints the time of detection for each occurrence and the wake word.
          """
-        log = os.open('../test.txt', os.O_RDWR)
 
         keywords = list()
         for x in self._keyword_paths:
@@ -104,14 +103,13 @@ class PorcupineDemo(Thread):
                     self._recorded_frames.append(pcm)
 
                 result = porcupine.process(pcm)
+                string = 'what\'s the date'
                 if result >= 0:
-                    print('[%s] Detected %s' % (str(datetime.now()), keywords[result]))
-                    os.write(log, b'detected wakeword\n');
-                    os.fsync(log)
+                    with open("../test.txt", "w") as f:
+                        f.write(string)
 
         except KeyboardInterrupt:
             print('Stopping ...')
-            os.write(log, b'end of output');
         finally:
             if porcupine is not None:
                 porcupine.delete()
@@ -194,9 +192,7 @@ def main():
             sensitivities=args.sensitivities,
             output_path=args.output_path,
             input_device_index=args.audio_device_index).run()
-    
-    
-        os.close(fd)
+
 
 if __name__ == '__main__':
     main()
