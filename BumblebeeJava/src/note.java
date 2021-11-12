@@ -1,4 +1,7 @@
 import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+
 public class note extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
