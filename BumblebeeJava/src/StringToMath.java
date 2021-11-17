@@ -23,13 +23,13 @@ public class StringToMath {
 			if(singleWords[i].equals("one")) {
 				outPut = outPut + "1";
 			}
-			if(singleWords[i].equals("two")) {
+			if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 				outPut = outPut + "2";
 			}
 			if(singleWords[i].equals("three")) {
 				outPut = outPut + "3";
 			}
-			if(singleWords[i].equals("four")) {
+			if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 				outPut = outPut + "4";
 			}
 			if(singleWords[i].equals("five")) {
@@ -88,13 +88,13 @@ public class StringToMath {
 					if(singleWords[i].equals("one")) {
 						outPut = outPut + "1";
 					}
-					else if(singleWords[i].equals("two")) {
+					else if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 						outPut = outPut + "2";
 					}
 					else if(singleWords[i].equals("three")) {
 						outPut = outPut + "3";
 					}
-					else if(singleWords[i].equals("four")) {
+					else if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 						outPut = outPut + "4";
 					}
 					else if(singleWords[i].equals("five")) {
@@ -130,13 +130,13 @@ public class StringToMath {
 					if(singleWords[i].equals("one")) {
 						outPut = outPut + "1";
 					}
-					else if(singleWords[i].equals("two")) {
+					else if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 						outPut = outPut + "2";
 					}
 					else if(singleWords[i].equals("three")) {
 						outPut = outPut + "3";
 					}
-					else if(singleWords[i].equals("four")) {
+					else if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 						outPut = outPut + "4";
 					}
 					else if(singleWords[i].equals("five")) {
@@ -172,13 +172,13 @@ public class StringToMath {
 					if(singleWords[i].equals("one")) {
 						outPut = outPut + "1";
 					}
-					else if(singleWords[i].equals("two")) {
+					else if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 						outPut = outPut + "2";
 					}
 					else if(singleWords[i].equals("three")) {
 						outPut = outPut + "3";
 					}
-					else if(singleWords[i].equals("four")) {
+					else if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 						outPut = outPut + "4";
 					}
 					else if(singleWords[i].equals("five")) {
@@ -214,13 +214,13 @@ public class StringToMath {
 					if(singleWords[i].equals("one")) {
 						outPut = outPut + "1";
 					}
-					else if(singleWords[i].equals("two")) {
+					else if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 						outPut = outPut + "2";
 					}
 					else if(singleWords[i].equals("three")) {
 						outPut = outPut + "3";
 					}
-					else if(singleWords[i].equals("four")) {
+					else if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 						outPut = outPut + "4";
 					}
 					else if(singleWords[i].equals("five")) {
@@ -256,13 +256,13 @@ public class StringToMath {
 					if(singleWords[i].equals("one")) {
 						outPut = outPut + "1";
 					}
-					else if(singleWords[i].equals("two")) {
+					else if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 						outPut = outPut + "2";
 					}
 					else if(singleWords[i].equals("three")) {
 						outPut = outPut + "3";
 					}
-					else if(singleWords[i].equals("four")) {
+					else if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 						outPut = outPut + "4";
 					}
 					else if(singleWords[i].equals("five")) {
@@ -298,13 +298,13 @@ public class StringToMath {
 					if(singleWords[i].equals("one")) {
 						outPut = outPut + "1";
 					}
-					else if(singleWords[i].equals("two")) {
+					else if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 						outPut = outPut + "2";
 					}
 					else if(singleWords[i].equals("three")) {
 						outPut = outPut + "3";
 					}
-					else if(singleWords[i].equals("four")) {
+					else if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 						outPut = outPut + "4";
 					}
 					else if(singleWords[i].equals("five")) {
@@ -340,13 +340,13 @@ public class StringToMath {
 					if(singleWords[i].equals("one")) {
 						outPut = outPut + "1";
 					}
-					else if(singleWords[i].equals("two")) {
+					else if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 						outPut = outPut + "2";
 					}
 					else if(singleWords[i].equals("three")) {
 						outPut = outPut + "3";
 					}
-					else if(singleWords[i].equals("four")) {
+					else if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 						outPut = outPut + "4";
 					}
 					else if(singleWords[i].equals("five")) {
@@ -382,13 +382,13 @@ public class StringToMath {
 					if(singleWords[i].equals("one")) {
 						outPut = outPut + "1";
 					}
-					else if(singleWords[i].equals("two")) {
+					else if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
 						outPut = outPut + "2";
 					}
 					else if(singleWords[i].equals("three")) {
 						outPut = outPut + "3";
 					}
-					else if(singleWords[i].equals("four")) {
+					else if(singleWords[i].equals("four") || singleWords[i].equals("for")) {
 						outPut = outPut + "4";
 					}
 					else if(singleWords[i].equals("five")) {
@@ -430,7 +430,7 @@ public class StringToMath {
 					}
 					else if(singleWords[i+1].equals("one") || singleWords[i+1].equals("two") || singleWords[i+1].equals("three") || singleWords[i+1].equals("four")
 							|| singleWords[i+1].equals("five") || singleWords[i+1].equals("six") || singleWords[i+1].equals("seven") || singleWords[i+1].equals("eight")
-							|| singleWords[i+1].equals("nine")){
+							|| singleWords[i+1].equals("nine") || singleWords[i+1].equals("too") || singleWords[i+1].equals("to") || singleWords[i+1].equals("for")){
 						outPut = outPut + "0";
 					}
 				}
@@ -440,13 +440,25 @@ public class StringToMath {
 			}
 			//Handles use of the word "thousand"
 			if(singleWords[i].equals("thousand")) {
-				outPut = outPut + "000";
-//			if(i+1<singleWords.length) {
-//			  
-//			if(singleWords[i+1].equals("plus")) { outPut = outPut + "000"; } else
-//			  if(singleWords[i+1].equals("hundred")) {
-//			  
-//			  } else { outPut = outPut + "00"; } } else { outPut = outPut + "000"; } }
+				if(singleWords[i+1].equals("and")) {
+					i++;
+				}
+				if(i+1<singleWords.length) {
+					if(singleWords[i+1].equals("plus") || singleWords[i+1].equals("minus") || singleWords[i+1].equals("times")
+							|| singleWords[i+1].equals("multiply") || singleWords[i+1].equals("multiplied") || singleWords[i+1].equals("divided")
+							|| singleWords[i+1].equals("divide") || singleWords[i+1].equals("")) {
+						System.out.println("HUNDRED");
+						outPut = outPut + "00";
+					}
+					else if(singleWords[i+1].equals("one") || singleWords[i+1].equals("two") || singleWords[i+1].equals("three") || singleWords[i+1].equals("four")
+							|| singleWords[i+1].equals("five") || singleWords[i+1].equals("six") || singleWords[i+1].equals("seven") || singleWords[i+1].equals("eight")
+							|| singleWords[i+1].equals("nine")){
+						outPut = outPut + "0";
+					}
+				}
+				else {
+					outPut = outPut + "00";
+				}
 			}
 			if(singleWords[i].equals("million")) {
 				outPut = outPut + "000000";
