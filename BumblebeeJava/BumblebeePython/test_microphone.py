@@ -70,9 +70,6 @@ try:
 
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
-            print('#' * 80)
-            print('Press Ctrl+C to stop the recording')
-            print('#' * 80)
 
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             while True:
@@ -83,8 +80,7 @@ try:
                         with open("../test.txt", "w") as f:
                             f.write(string)
                         subprocess.call("python demo.py --keywords bumblebee", shell=True)
-                #  else:
-                    #  print(rec.PartialResult())
+                        quit()
                 if dump_fn is not None:
                     dump_fn.write(data)
 

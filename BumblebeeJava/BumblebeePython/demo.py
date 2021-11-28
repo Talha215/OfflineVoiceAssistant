@@ -106,6 +106,7 @@ class PorcupineDemo(Thread):
                 result = porcupine.process(pcm)
                 if result >= 0:
                     subprocess.call("python test_microphone.py", shell=True)
+                    quit()
 
         except KeyboardInterrupt:
             print('Stopping ...')
