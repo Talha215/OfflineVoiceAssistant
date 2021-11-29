@@ -18,7 +18,7 @@ public class weather implements commandInterface{
     public boolean match(String word) { return commandPhrases.contains(word);}
 
     public  String run(String[] input) {
-        String apiKey = "c92c100a7829e172b2888b44106073b7";
+        String apiKey = "";
         String  urlCityID = "https://api.openweathermap.org/data/2.5/weather?id=";
         String units = "&units=imperial";
         int start = 0;

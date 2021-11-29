@@ -2,7 +2,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class note extends commandClass implements commandInterface {
+public class notes extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
     public note() {
@@ -29,16 +29,17 @@ public class note extends commandClass implements commandInterface {
                 fileName = fileName.concat(input[j] + " ");
         }
         try {
-        	FileWriter writer = new FileWriter(fileName + ".txt");
+            FileWriter writer = new FileWriter(fileName + ".txt");
             for(k=(i+1); k<input.length; k++){
                 writer.write(input[k] + " ");
             }
             writer.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
         return "Made note: " + fileName;
     }
 }
+
