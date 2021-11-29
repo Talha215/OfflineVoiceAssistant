@@ -1,19 +1,19 @@
 import java.util.ArrayList;
 
-public class repeat extends commandClass{
-	ArrayList<String> commandPhrases = new ArrayList<String>();
-	
-	public repeat() {
-		commandPhrases.add("repeat");
-	}
+public class repeat extends commandClass {
+    ArrayList<String> commandPhrases = new ArrayList<>();
 
-	@Override
-	public boolean match(String token) {
-		return commandPhrases.contains(token);
-	}
+    public repeat() {
+        commandPhrases.add("repeat");
+    }
 
-	@Override
-	public String run(String[] command) {
-		return String.join(" ", command);		
-	}
+    @Override
+    public boolean match(String token) {
+        return commandPhrases.contains(token);
+    }
+
+    @Override
+    public String run(String[] command) {
+        return String.join(" ", command);
+    }
 }

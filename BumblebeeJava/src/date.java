@@ -4,17 +4,17 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
 public class date extends commandClass implements commandInterface {
-	ArrayList<String> commandPhrases = new ArrayList<String>();
-	
-	public date() {
-    	commandPhrases.add("date");
+    ArrayList<String> commandPhrases = new ArrayList<String>();
+
+    public date() {
+        commandPhrases.add("date");
     }
-		
-    public boolean match(String word){
+
+    public boolean match(String word) {
         return commandPhrases.contains(word);
     }
-    
-    public String run(String[] input){
+
+    public String run(String[] input) {
         DateTimeFormatter dtf = DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL);
         LocalDateTime now = LocalDateTime.now();
         return ("today is " + dtf.format(now));

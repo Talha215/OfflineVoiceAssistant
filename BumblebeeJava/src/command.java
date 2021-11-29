@@ -2,5 +2,5 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface command {
-    public List<String> commandPhrases = new ArrayList<String>();
+    List<String> commandPhrases = new ArrayList<>();
 }
