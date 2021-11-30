@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class read extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
-    public date() {
+    public read() {
         commandPhrases.add("read");
     }
 
@@ -12,7 +12,7 @@ public class read extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
-        String filename "";
+        String fileName = "";
         for(j=1; j<input.length; j++){
             if(j == input.length)
                 fileName = fileName.concat(input[j]);
@@ -21,11 +21,9 @@ public class read extends commandClass implements commandInterface {
         }
 
         try {
-            FileReader reader = new FileReader(filename + ".txt");
-            for(k=(i+1); k<input.length; k++){
-                int i;
-                while ((i = fr.read()) != -1)
-                    String output = ((char)i);
+            FileReader reader = new FileReader(fileName + ".txt");
+            while ((i = fr.read()) != -1)
+                String output = ((char)i);
             }
             reader.close();
         } catch (IOException e) {

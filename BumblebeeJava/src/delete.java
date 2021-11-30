@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class delete extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
-    public date() {
+    public delete() {
         commandPhrases.add("delete");
     }
 

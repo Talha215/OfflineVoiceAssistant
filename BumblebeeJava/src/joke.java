@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class joke extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
-    public date() {
+    public joke() {
         commandPhrases.add("joke");
     }
 
@@ -38,5 +38,6 @@ public class joke extends commandClass implements commandInterface {
             case 10: joke = "Well, to be Frank with you, I’d have to change my name.";
                 break;
         }
+        return joke;
     }
 }

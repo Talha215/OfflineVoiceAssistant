@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class about extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
-    public date() {
+    public about() {
         commandPhrases.add("syntax");
     }
 
@@ -57,6 +57,7 @@ public class about extends commandClass implements commandInterface {
                 return ("the weather command returns the current local weather");
             }
         }
+        return null;
     }
 }
 }

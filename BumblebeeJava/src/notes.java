@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class notes extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
-    public note() {
+    public notes() {
         commandPhrases.add("note");
     }
 
