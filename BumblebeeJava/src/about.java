@@ -12,14 +12,15 @@ public class about extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
+        int j=0;
 
-        for(int j=0; i<input.length; i++){
-            if(input[i].equals("about")){
+        for(j=0; j<input.length; j++){
+            if(input[j].equals("about")){
                 break;
             }
         }
 
-        for(int i=j; i<input.length; i++) {
+        for(int i=j+1; i<input.length; i++) {
             if (input[i].equals("about")) {
                 return ("the about command gives a brief description of a configured command");
             }
@@ -65,5 +66,4 @@ public class about extends commandClass implements commandInterface {
         }
         return null;
     }
-}
 }
