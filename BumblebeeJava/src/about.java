@@ -19,11 +19,21 @@ public class date extends commandClass implements commandInterface {
             if (input[i].equals("calculator")) {
                 return ("the calculator can perform basic sequential operations between decimal numbers");
             }
+            if (input[i].equals("coin")) {
+                return ("performs a coin toss");
+            }
             if (input[i].equals("date")) {
                 return ("the date command can get the current date");
             }
+            if (input[i].equals("delete")) {
+                return ("the delete command can remove an existing note or list, or any text file in the " +
+                        "designated path");
+            }
             if (input[i].equals("google")) {
                 return ("the google command allows you to perform a google search and returns the top result");
+            }
+            if (input[i].equals("joke")) {
+                return ("the joke command will tell you a random, preset joke");
             }
             if (input[i].equals("list")) {
                 return ("the list command generates a named text file with a list of all mentioned elements");

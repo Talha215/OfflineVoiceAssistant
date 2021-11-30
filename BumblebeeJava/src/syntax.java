@@ -21,12 +21,21 @@ public class date extends commandClass implements commandInterface {
                 return ("to use the calculator, simply say any numbers with an operation between them, such as " +
                         "twenty two minus eighteen");
             }
+            if (input[i].equals("calculator")) {
+                return ("to perform a coin toss, say flip a coin or do a coin toss");
+            }
             if (input[i].equals("date")) {
                 return ("to get the current date, you can say what is the date today or simply say date alone");
+            }
+            if (input[i].equals("delete")) {
+                return ("to delete a file, say delete followed by the file name, void of the dot t x t");
             }
             if (input[i].equals("google")) {
                 return ("to use the google feature, say google followed by the exact phrase you would like" +
                         "entered to the google search bar");
+            }
+            if (input[i].equals("joke")) {
+                return ("to hear a joke, just say tell me a joke");
             }
             if (input[i].equals("list")) {
                 return ("for the list command, say what you would like the file being created to be named, followed" +
