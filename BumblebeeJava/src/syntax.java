@@ -12,8 +12,15 @@ public class syntax extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
+        int j=0;
 
-        for(int i=0; i<input.length; i++) {
+        for(j=0; j<input.length; j++){
+            if(input[j].equals("syntax")){
+                break;
+            }
+        }
+
+        for(int i=j+1; i<input.length; i++) {
             if (input[i].equals("about")) {
                 return ("for the about command, please say the word about " +
                         "followed by the command you would like to learn about");
