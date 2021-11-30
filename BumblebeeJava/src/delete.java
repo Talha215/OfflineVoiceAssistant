@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class date extends commandClass implements commandInterface {
+public class delete extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
     public date() {

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class date extends commandClass implements commandInterface {
+public class syntax extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
     public date() {
@@ -12,10 +12,6 @@ public class date extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
-        for(int j=0; j<input.length; j++) {
-            if(input[j].equals( "for" || "a" || "the" || "of" ))
-                input.remove(j);
-        }
 
         for(int i=0; i<input.length; i++) {
             if (input[i].equals("about")) {
@@ -70,5 +66,6 @@ public class date extends commandClass implements commandInterface {
             }
             }
         }
+        return null;
     }
 }

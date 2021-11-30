@@ -80,7 +80,7 @@ public class stateMachine {
 
 	public static void main(String[] args) throws InterruptedException {
 		while(true) {	
-			Scanner input = null;
+			/*Scanner input = null;
 			String output = null;
 			
 			do {
@@ -102,9 +102,10 @@ public class stateMachine {
 				} catch(FileNotFoundException e ) {
 					Thread.sleep(1000);
 				}
-			} while(output == null);
+			} while(output == null);*/
 			
 			stateMachine run;
+			String output = "tell me a joke";
 			try {
 				run = new stateMachine(output);
 				stateMachine.textToSpeech.setVoice("dfki-poppy-hsmm");
