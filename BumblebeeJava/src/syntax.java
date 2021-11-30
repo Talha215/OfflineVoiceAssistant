@@ -38,6 +38,9 @@ public class date extends commandClass implements commandInterface {
                         "by the word note, followed by the phrase you would like in your note without any mention" +
                         "of deliminators");
             }
+            if (input[i].equals("read")) {
+                return ("to read a created file, say read followed by the file name, void of the dot t x t");
+            }
             if (input[i].equals("syntax")) {
                 return ("to get the syntax of a command, say syntax followed by any command phrase " +
                         "configured into the machine");

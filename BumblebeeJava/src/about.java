@@ -31,6 +31,10 @@ public class date extends commandClass implements commandInterface {
             if (input[i].equals("note")) {
                 return ("the note command generates a named text file with any mentioned phrase");
             }
+            if (input[i].equals("read")) {
+                return ("the read command can read the contents of a created note or list file, or any" +
+                        "text file in the designated path on your machine");
+            }
             if (input[i].equals("syntax")) {
                 return ("the syntax command returns the required syntax for any command");
             }
