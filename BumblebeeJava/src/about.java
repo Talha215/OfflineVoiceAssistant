@@ -4,7 +4,7 @@ public class about extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 
     public about() {
-        commandPhrases.add("syntax");
+        commandPhrases.add("about");
     }
 
     public boolean match(String word){
@@ -13,7 +13,13 @@ public class about extends commandClass implements commandInterface {
 
     public String run(String[] input){
 
-        for(int i=0; i<input.length; i++) {
+        for(int j=0; i<input.length; i++){
+            if(input[i].equals("about")){
+                break;
+            }
+        }
+
+        for(int i=j; i<input.length; i++) {
             if (input[i].equals("about")) {
                 return ("the about command gives a brief description of a configured command");
             }
