@@ -64,6 +64,6 @@ public class about extends commandClass implements commandInterface {
                 return ("the weather command returns the current local weather");
             }
         }
-        return null;
+        return "Failed to complete command";
     }
 }

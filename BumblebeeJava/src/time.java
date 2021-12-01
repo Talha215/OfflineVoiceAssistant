@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
 
+import com.ibm.icu.util.Calendar;
+
 public class time extends commandClass implements commandInterface {
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 	
@@ -16,8 +18,10 @@ public class time extends commandClass implements commandInterface {
     }
     
     public String run(String[] input){
+    	StringToMath converter = new StringToMath();
         DateFormat df = new SimpleDateFormat("hh:mm a");
         Date today = new Date();
+        Calendar cal = Calendar.getInstance();
         
         for(int i=0; i<input.length; i++){
             if(input[i].equals("greenwich")){
@@ -239,6 +243,24 @@ public class time extends commandClass implements commandInterface {
                     String zone = df.format(today);
                     return ("the " + input[i] + " " + input[i+1] + " " + "time is " + zone);
                 }
+            }
+            if(input[i].equals("minutes") || input[i].equals("minute")){
+                String minOffset, t;
+                minOffset = StringToMath.convert(input[i-1]);
+                t = minOffset;
+                int mins = Integer.parseInt(minOffset);
+                cal.add(Calendar.MINUTE, mins);
+                String newTime = df.format(cal.getTime());
+                return ("the time in " + t + " minutes will be " + newTime);
+            }
+            if(input[i].equals("hours") || input[i].equals("hour")){
+                String hourOffset, t;
+                hourOffset = StringToMath.convert(input[i-1]);
+                t = hourOffset;
+                int hours = Integer.parseInt(hourOffset);
+                cal.add(Calendar.HOUR, hours);
+                String newTime = df.format(cal.getTime());
+                return ("the time in " + t + " hours will be " + newTime);
             }
 
 

@@ -37,7 +37,7 @@ public class search extends commandClass implements command{
 		try {
 			response = Jsoup.connect(URL + fullCommand).get();
 			Elements results = response.getElementById("links").getElementsByClass("results_links");
-			System.out.println(response.getElementsByClass("result__snippet").first().text());
+			//System.out.println(response.getElementsByClass("result__snippet").first().text());
 			return response.getElementsByClass("result__snippet").first().text();
 		} catch (IOException e) {
 			e.printStackTrace(); 

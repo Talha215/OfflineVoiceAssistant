@@ -1,6 +1,8 @@
+import java.awt.BorderLayout;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
+import javax.swing.*;
 
 public class stateMachine {
 	//Data members
@@ -18,7 +20,7 @@ public class stateMachine {
 		
 		//loads classes from commmandClasses File
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream inputStream = classLoader.getResourceAsStream("commandClasses");
+		InputStream inputStream = classLoader.getResourceAsStream("config");
 		Scanner scanner = new Scanner(inputStream).useDelimiter(" ");
 		//Scanner gets class names from commandClasses file
 		while (scanner.hasNextLine()) {
@@ -78,11 +80,27 @@ public class stateMachine {
 		return toSpeak;
 	}
 
-	public static void main(String[] args) throws InterruptedException {
+	public static void main(String[] args) throws InterruptedException, IOException {
+		//Process p = Runtime.getRuntime().exec("cmd.exe /c start python test.py");
+		
+		try { 
+		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (Exception e) {
+		    e.printStackTrace();
+		}			
+		
+		/*JFrame frame = new JFrame("Bumblebee!");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(720, 480);
+        frame.getContentPane().add(new JButton("Press"), BorderLayout.CENTER);
+        frame.getContentPane().add(new JButton("Press"), BorderLayout.NORTH);
+        frame.getContentPane().add(new JButton("Press"), BorderLayout.SOUTH);
+        frame.setVisible(true);*/
+		
 		while(true) {	
-			/*Scanner input = null;
+			Scanner input = new Scanner(System.in);
 			String output = null;
-			
+
 			do {
 				try {
 					input = new Scanner(new BufferedReader(new FileReader("test.txt")));
@@ -96,16 +114,15 @@ public class stateMachine {
 					toDelete.delete();
 					
 					//string manipulation of output	
-					//System.out.println(output);
-					output = output.substring(14, output.lastIndexOf('\"'));				
+					output = output.substring(14, output.lastIndexOf('\"'));
+					System.out.println("input: " + output);
 					
 				} catch(FileNotFoundException e ) {
 					Thread.sleep(1000);
 				}
-			} while(output == null);*/
+			} while(output == null);
 			
 			stateMachine run;
-			String output = "tell me a joke";
 			try {
 				run = new stateMachine(output);
 				stateMachine.textToSpeech.setVoice("dfki-poppy-hsmm");

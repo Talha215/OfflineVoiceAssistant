@@ -14,6 +14,7 @@ public class repeat extends commandClass{
 
 	@Override
 	public String run(String[] command) {
-		return String.join(" ", command);		
+		String temp = String.join(" ", command);
+		return temp + " is not a command";	
 	}
 }

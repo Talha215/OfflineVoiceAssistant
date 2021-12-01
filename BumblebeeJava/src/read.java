@@ -35,7 +35,7 @@ public class read extends commandClass implements commandInterface {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        System.out.println(output);
+        //System.out.println(output);
 		return output;
     }
 }

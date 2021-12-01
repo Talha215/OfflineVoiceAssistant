@@ -40,7 +40,7 @@ public class calculator extends commandClass implements commandInterface {
 		String intMath = converter.convert(fullCommand);
 		String output = stack.calculate(intMath);
 		System.out.println(intMath);
-		System.out.println(output);
+		//System.out.println(output);
 		converter.clear();
 		return output;
 	}
