@@ -12,7 +12,7 @@ public class joke extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
-        String joke;
+        String joke = "";
         int rand = (int)Math.floor(Math.random()*(10-1+1)+1);
         switch (rand) {
             case 1:  joke = "I went to buy some camo pants, but couldn’t find any";
@@ -38,6 +38,6 @@ public class joke extends commandClass implements commandInterface {
             case 10: joke = "Well, to be Frank with you, I’d have to change my name.";
                 break;
         }
-        return joke;
+		return joke;
     }
 }

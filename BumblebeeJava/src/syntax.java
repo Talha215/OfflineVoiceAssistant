@@ -12,7 +12,7 @@ public class syntax extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
-        int j=0;
+    	int j = 0;
 
         for(j=0; j<input.length; j++){
             if(input[j].equals("syntax")){
@@ -20,7 +20,7 @@ public class syntax extends commandClass implements commandInterface {
             }
         }
 
-        for(int i=j+1; i<input.length; i++) {
+		for(int i=j+1; i<input.length; i++) {
             if (input[i].equals("about")) {
                 return ("for the about command, please say the word about " +
                         "followed by the command you would like to learn about");
@@ -72,7 +72,6 @@ public class syntax extends commandClass implements commandInterface {
                         "say weather alone");
             }
             }
+		return "Whoops";
         }
-        return null;
     }
-}

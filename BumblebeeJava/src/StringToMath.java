@@ -4,7 +4,7 @@
 
 
 /**
- * @author No This is Patrick
+ * @author Ian Zichko-Geithner
  *
  */
 public class StringToMath {
@@ -19,12 +19,16 @@ public class StringToMath {
 		
 		String[] singleWords = words.split(" ");
 		for(int i=0;i<singleWords.length;i++) {
-			System.out.println(singleWords[i]);
 			if(singleWords[i].equals("one")) {
 				outPut = outPut + "1";
 			}
 			if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
-				outPut = outPut + "2";
+				if(singleWords[i-1].equals("two") || singleWords[i-1].equals("to") || singleWords[i-1].equals("too")) {
+					
+				}
+				else {
+					outPut = outPut + "2";
+				}
 			}
 			if(singleWords[i].equals("three")) {
 				outPut = outPut + "3";
@@ -425,7 +429,6 @@ public class StringToMath {
 					if(singleWords[i+1].equals("plus") || singleWords[i+1].equals("minus") || singleWords[i+1].equals("times")
 							|| singleWords[i+1].equals("multiply") || singleWords[i+1].equals("multiplied") || singleWords[i+1].equals("divided")
 							|| singleWords[i+1].equals("divide") || singleWords[i+1].equals("")) {
-						System.out.println("HUNDRED");
 						outPut = outPut + "00";
 					}
 					else if(singleWords[i+1].equals("one") || singleWords[i+1].equals("two") || singleWords[i+1].equals("three") || singleWords[i+1].equals("four")
@@ -493,8 +496,12 @@ public class StringToMath {
 				outPut = outPut + " / ";
 			}
 			//If the word intends exponents
-			if(singleWords[i].equals("exponent")) {
+			if(singleWords[i].equals("exponent") || singleWords[i].equals("power")) {
 				outPut = outPut + " ^ ";
+			}
+			//If the user enters squared
+			if(singleWords[i].equals("squared")) {
+				outPut = outPut + " ^ 2 ";
 			}
 			//If the word intends open parenthesis
 			if(singleWords[i].equals("open")) {

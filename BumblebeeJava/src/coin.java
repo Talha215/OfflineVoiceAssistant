@@ -12,12 +12,12 @@ public class coin extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
-        String result;
+        String result = "";
         int rand = (int)Math.floor(Math.random()*(2-1+1)+1);
         switch (rand) {
             case 1:  result = "heads";
                 break;
-            case 2:  joke = "tails";
+            case 2:  result = "tails";
                 break;
         }
         return result;

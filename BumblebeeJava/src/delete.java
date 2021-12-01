@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 
 public class delete extends commandClass implements commandInterface {
@@ -12,17 +13,18 @@ public class delete extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
-        String filename "";
-        for(j=1; j<input.length; j++){
-            if(j == input.length)
+        String fileName = "";
+        for(int j=1; j<input.length; j++){
+            if(j == input.length-1)
                 fileName = fileName.concat(input[j]);
             else
                 fileName = fileName.concat(input[j] + " ");
         }
-        File file = new File(filename + ".txt");
+        File file = new File(fileName + ".txt");
         if (file.delete()) {
-            return ("successfully deleted " + filename);
+            return ("successfully deleted " + fileName);
         } else {
-            return ("no file called " + filename + " could be deleted");
+            return ("no file called " + fileName + " could be deleted");
     }
+}
 }

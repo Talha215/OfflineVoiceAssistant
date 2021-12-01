@@ -1,3 +1,5 @@
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class read extends commandClass implements commandInterface {
@@ -12,9 +14,10 @@ public class read extends commandClass implements commandInterface {
     }
 
     public String run(String[] input){
+        String output = "";
         String fileName = "";
-        for(j=1; j<input.length; j++){
-            if(j == input.length)
+        for(int j=1; j<input.length; j++){
+            if(j == input.length-1)
                 fileName = fileName.concat(input[j]);
             else
                 fileName = fileName.concat(input[j] + " ");
@@ -22,14 +25,17 @@ public class read extends commandClass implements commandInterface {
 
         try {
             FileReader reader = new FileReader(fileName + ".txt");
-            while ((i = fr.read()) != -1)
-                String output = ((char)i);
-            }
+
+                int i;
+                while ((i = reader.read()) != -1) {
+                    output+= Character.toString((char)i);
+                }
             reader.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return output;
+        System.out.println(output);
+		return output;
     }
 }

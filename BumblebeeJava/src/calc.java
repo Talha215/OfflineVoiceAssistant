@@ -54,6 +54,9 @@ public class calc {
         	 getComp(ops, vals);
          }
          outPut = vals.pop().toString();
+         // If the number is xx.0 remove the .0 for cleaner audio.
+         if(outPut.charAt(outPut.length()-1)=='0' && outPut.charAt(outPut.length()-2)=='.')
+        	 outPut = outPut.substring(0, outPut.length()-2);
 		return outPut;
 	}
 	

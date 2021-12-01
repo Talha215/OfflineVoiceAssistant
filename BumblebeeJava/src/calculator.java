@@ -21,6 +21,9 @@ public class calculator extends commandClass implements commandInterface {
 		commandPhrases.add("divided");
 		commandPhrases.add("multiplied");
 		commandPhrases.add("multiply");
+		commandPhrases.add("exponent");
+		commandPhrases.add("power");
+		commandPhrases.add("squared");
 	}
 
 	@Override
@@ -38,6 +41,7 @@ public class calculator extends commandClass implements commandInterface {
 		String output = stack.calculate(intMath);
 		System.out.println(intMath);
 		System.out.println(output);
+		converter.clear();
 		return output;
 	}
 
