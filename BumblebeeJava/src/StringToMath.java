@@ -513,7 +513,9 @@ public class StringToMath {
 			}
 			
 		}
-		return outPut;
+		String saved = outPut;
+		outPut = "";
+		return saved;
 		
 	}
 	public static void clear() {
