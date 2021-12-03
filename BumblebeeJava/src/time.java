@@ -245,27 +245,37 @@ public class time extends commandClass implements commandInterface {
             }
             if(input[i].equals("minutes") || input[i].equals("minute")){
                 StringToMath.clear();
-            	String minOffset, t;
-                minOffset = StringToMath.convert(input[i-1]);
-                t = minOffset;
-                int mins = Integer.parseInt(minOffset);
-                cal.add(Calendar.MINUTE, mins);
+                String t, minOffset;
+                int start = 0;
+                for(int k = 0; k < input.length; k++){
+                    if(input[k].equals("in")) {
+                        start = k;
+                        break;
+                    }
+                }
+                minOffset = StringToMath.convert(String.join(" ", Arrays.copyOfRange(input, ++start, input.length-1)));
+                int minutes = Integer.parseInt(minOffset);
+                cal.add(Calendar.MINUTE, minutes);
                 String newTime = df.format(cal.getTime());
-                
                 StringToMath.clear();
-                return ("the time in " + t + " minutes will be " + newTime);
+                return ("the time in " + minOffset + " hours will be " + newTime);
             }
-            if(input[i].equals("hours") || input[i].equals("hour")){            	
-            	StringToMath.clear();
-            	String hourOffset, t;
-                hourOffset = StringToMath.convert(input[i-1]);
-                t = hourOffset;
+            if(input[i].equals("hours") || input[i].equals("hour")){
+                StringToMath.clear();
+                String t, hourOffset;
+                int start = 0;
+                for(int k = 0; k < input.length; k++){
+                    if(input[k].equals("in")) {
+                        start = k;
+                        break;
+                    }
+                }
+                hourOffset = StringToMath.convert(String.join(" ", Arrays.copyOfRange(input, ++start, input.length-1)));
                 int hours = Integer.parseInt(hourOffset);
                 cal.add(Calendar.HOUR, hours);
                 String newTime = df.format(cal.getTime());
-                
                 StringToMath.clear();
-                return ("the time in " + t + " hours will be " + newTime);
+                return ("the time in " + hourOffset + " hours will be " + newTime);
             }
 
 
