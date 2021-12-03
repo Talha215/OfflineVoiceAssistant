@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
@@ -7,6 +8,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MaryTTS"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/MaryTTS+JSoup+Guava"/>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/No This is Patrick/Documents/GitHub/resources/json-20210307.jar"/>
+	<classpathentry kind="lib" path="C:/Users/No This is Patrick/Documents/GitHub/resources/jsoup-1.14.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/No This is Patrick/Documents/GitHub/resources/marytts-lang-en-5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/No This is Patrick/Documents/GitHub/resources/marytts-runtime-5.2-jar-with-dependencies.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
