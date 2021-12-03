@@ -37,9 +37,6 @@ public class about extends commandClass implements commandInterface {
                 return ("the delete command can remove an existing note or list, or any text file in the " +
                         "designated path");
             }
-            if (input[i].equals("google")) {
-                return ("the google command allows you to perform a google search and returns the top result");
-            }
             if (input[i].equals("joke")) {
                 return ("the joke command will tell you a random, preset joke");
             }
@@ -53,6 +50,9 @@ public class about extends commandClass implements commandInterface {
                 return ("the read command can read the contents of a created note or list file, or any" +
                         "text file in the designated path on your machine");
             }
+            if (input[i].equals("search")) {
+            	return ("the google command allows you to perform a google search and returns the top result");
+            }
             if (input[i].equals("syntax")) {
                 return ("the syntax command returns the required syntax for any command");
             }
@@ -61,7 +61,10 @@ public class about extends commandClass implements commandInterface {
                         "in any time zone");
             }
             if (input[i].equals("weather")) {
-                return ("the weather command returns the current local weather");
+                return ("the weather command returns the weather in a city you ask for");
+            }
+            else {
+            	return ("i am your personal voice assistant designed to work offline. you can call me bumblebee");
             }
         }
         return "Failed to complete command";

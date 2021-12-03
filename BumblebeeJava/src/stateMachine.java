@@ -1,8 +1,6 @@
-import java.awt.BorderLayout;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
-import javax.swing.*;
 
 public class stateMachine {
 	//Data members
@@ -75,27 +73,14 @@ public class stateMachine {
 	}
 	//Runs the output for the associated command CLass. should be run in final product.
 	public String outPut(int j) {
-		String toSpeak = activeClasses.get(j).run(commandTokens);
+		String toSpeak = "";
+		toSpeak = activeClasses.get(j).run(commandTokens);
 		System.out.println(toSpeak);
 		return toSpeak;
 	}
 
 	public static void main(String[] args) throws InterruptedException, IOException {
 		//Process p = Runtime.getRuntime().exec("cmd.exe /c start python test.py");
-		
-		try { 
-		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}			
-		
-		/*JFrame frame = new JFrame("Bumblebee!");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(720, 480);
-        frame.getContentPane().add(new JButton("Press"), BorderLayout.CENTER);
-        frame.getContentPane().add(new JButton("Press"), BorderLayout.NORTH);
-        frame.getContentPane().add(new JButton("Press"), BorderLayout.SOUTH);
-        frame.setVisible(true);*/
 		
 		while(true) {	
 			Scanner input = new Scanner(System.in);

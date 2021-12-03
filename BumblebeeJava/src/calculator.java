@@ -1,13 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * 
- */
-
-/**
- * @author No This is Patrick
- *
- */
 public class calculator extends commandClass implements commandInterface {
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 	StringToMath converter = new StringToMath();
@@ -33,6 +25,7 @@ public class calculator extends commandClass implements commandInterface {
 
 	@Override
 	public String run(String[] command) {
+		//StringToMath.clear();
 		String fullCommand = "";
 		for(int i=0;i<command.length;i++) {
 			fullCommand += command[i] + " ";

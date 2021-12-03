@@ -1,14 +1,14 @@
-repeat
-test
+notCommand
 about
 calculator
 coin
 date
 delete
-search
 joke
 list
 notes
 read
+search
 syntax
 time
+weather

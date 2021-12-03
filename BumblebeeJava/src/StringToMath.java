@@ -23,12 +23,7 @@ public class StringToMath {
 				outPut = outPut + "1";
 			}
 			if(singleWords[i].equals("two") || singleWords[i].equals("to") || singleWords[i].equals("too")) {
-				if(singleWords[i-1].equals("two") || singleWords[i-1].equals("to") || singleWords[i-1].equals("too")) {
-					
-				}
-				else {
-					outPut = outPut + "2";
-				}
+				outPut = outPut + "2";
 			}
 			if(singleWords[i].equals("three")) {
 				outPut = outPut + "3";

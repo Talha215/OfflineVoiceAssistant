@@ -17,8 +17,7 @@ public class time extends commandClass implements commandInterface {
         return commandPhrases.contains(word);
     }
     
-    public String run(String[] input){
-    	StringToMath converter = new StringToMath();
+    public String run(String[] input) {
         DateFormat df = new SimpleDateFormat("hh:mm a");
         Date today = new Date();
         Calendar cal = Calendar.getInstance();
@@ -245,21 +244,27 @@ public class time extends commandClass implements commandInterface {
                 }
             }
             if(input[i].equals("minutes") || input[i].equals("minute")){
-                String minOffset, t;
+                StringToMath.clear();
+            	String minOffset, t;
                 minOffset = StringToMath.convert(input[i-1]);
                 t = minOffset;
                 int mins = Integer.parseInt(minOffset);
                 cal.add(Calendar.MINUTE, mins);
                 String newTime = df.format(cal.getTime());
+                
+                StringToMath.clear();
                 return ("the time in " + t + " minutes will be " + newTime);
             }
-            if(input[i].equals("hours") || input[i].equals("hour")){
-                String hourOffset, t;
+            if(input[i].equals("hours") || input[i].equals("hour")){            	
+            	StringToMath.clear();
+            	String hourOffset, t;
                 hourOffset = StringToMath.convert(input[i-1]);
                 t = hourOffset;
                 int hours = Integer.parseInt(hourOffset);
                 cal.add(Calendar.HOUR, hours);
                 String newTime = df.format(cal.getTime());
+                
+                StringToMath.clear();
                 return ("the time in " + t + " hours will be " + newTime);
             }
 

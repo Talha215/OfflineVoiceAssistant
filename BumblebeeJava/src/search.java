@@ -1,17 +1,11 @@
 import java.util.ArrayList;
 import java.io.IOException;
+import java.net.UnknownHostException;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-/**
- * 
- */
 
-/**
- * @author Ian Zichko-Geithner
- *
- */
 public class search extends commandClass implements command{
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 
@@ -39,9 +33,12 @@ public class search extends commandClass implements command{
 			Elements results = response.getElementById("links").getElementsByClass("results_links");
 			//System.out.println(response.getElementsByClass("result__snippet").first().text());
 			return response.getElementsByClass("result__snippet").first().text();
+		} catch(UnknownHostException e) {
+			return "You are not connected to the internet";
 		} catch (IOException e) {
 			e.printStackTrace(); 
-		}
+		} 
+		
 		return "There was an error in the search";
 
 

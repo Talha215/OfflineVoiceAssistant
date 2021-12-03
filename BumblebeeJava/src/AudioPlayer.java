@@ -15,12 +15,6 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import marytts.util.data.audio.MonoAudioInputStream;
 import marytts.util.data.audio.StereoAudioInputStream;
 
-/**
- * An audio player that utilizes a single thread
- * 
- * @author Ian Zichko-Geithner
- *
- */
 public class AudioPlayer extends Thread {
 
 	//MaryTTS settings taken from a tutorial

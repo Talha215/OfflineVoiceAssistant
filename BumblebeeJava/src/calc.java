@@ -1,15 +1,5 @@
-/**
-
- * 
- */
-
-
 import java.util.Stack;
 
-/**
- * @author Ian Zichko-Geithner
- *
- */
 public class calc {
 	static String input;
 	static String outPut;

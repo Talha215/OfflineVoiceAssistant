@@ -5,10 +5,7 @@ import java.net.http.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * @author cheetu
- */
-public class weather implements commandInterface{
+public class weather extends commandClass implements commandInterface{
     ArrayList<String> commandPhrases = new ArrayList<>();
 
 
@@ -19,7 +16,7 @@ public class weather implements commandInterface{
 
     public  String run(String[] input) {
         String apiKey = "c92c100a7829e172b2888b44106073b7";
-        String  urlCityID = "https://api.openweathermap.org/data/2.5/weather?id=";
+        String urlCity = "https://api.openweathermap.org/data/2.5/weather?q=";
         String units = "&units=imperial";
         int start = 0;
 
@@ -32,21 +29,8 @@ public class weather implements commandInterface{
 
         String str =  String.join(" ", Arrays.copyOfRange(input, ++start, input.length));
 
-
-        String ID = switch (str) {
-            case "new york city", "new york" -> "5128581";
-            case "boston" -> "4930956";
-            case "los angeles" -> "5368361";
-            case "vancouver" -> "6173331";
-            case "atlanta" -> "4180439";
-            case "albany" -> "5106834";
-            //   case "Albany", default -> "5106834";
-            default -> "616593";
-
-        };
-
         HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(urlCityID + ID + apiKey + units)).build();
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(urlCity + str + "&appid=" + apiKey + units)).build();
         return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
                 .thenApply(HttpResponse::body)
                 .thenApply(weather::parse)

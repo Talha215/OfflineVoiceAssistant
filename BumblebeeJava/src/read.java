@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,7 +32,9 @@ public class read extends commandClass implements commandInterface {
                     output+= Character.toString((char)i);
                 }
             reader.close();
-        } catch (IOException e) {
+        } catch(FileNotFoundException e) {
+        	return "no file called " + fileName + " could be read";
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
