@@ -88,7 +88,7 @@ public class timer extends commandClass implements commandInterface {
 	class reminder extends TimerTask {
 		public void run() {
 			timerTextToSpeech.setVoice("dfki-poppy-hsmm");
-			timerTextToSpeech.speak("BEEEEEEEEEEEEEEEEEEEEEEEEEP BEEEP BEEEEP BEEEEEP BEEP", 1.5f, false, true);
+			timerTextToSpeech.speak("BEEP BEEP BEEP BEEP BEEP BEEP BEEP BEEP", 1.5f, false, true);
 			timer.cancel();
 		}
 	}
