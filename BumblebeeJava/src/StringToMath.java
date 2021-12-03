@@ -515,6 +515,7 @@ public class StringToMath {
 		}
 		String saved = outPut;
 		outPut = "";
+		//comment
 		return saved;
 		
 	}
