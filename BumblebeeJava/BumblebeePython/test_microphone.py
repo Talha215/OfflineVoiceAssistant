@@ -8,8 +8,10 @@ import subprocess
 import sounddevice as sd
 import vosk
 import sys
+from playsound import playsound
 
 q = queue.Queue()
+
 
 def int_or_str(text):
     """Helper function for argument parsing."""
@@ -18,11 +20,13 @@ def int_or_str(text):
     except ValueError:
         return text
 
+
 def callback(indata, frames, time, status):
     """This is called (from a separate thread) for each audio block."""
     # if status:
         # print(status, file=sys.stderr)
     q.put(bytes(indata))
+
 
 parser = argparse.ArgumentParser(add_help=False)
 parser.add_argument(
@@ -71,18 +75,20 @@ try:
     with sd.RawInputStream(samplerate=args.samplerate, blocksize = 8000, device=args.device, dtype='int16',
                             channels=1, callback=callback):
 
-            rec = vosk.KaldiRecognizer(model, args.samplerate)
-            while True:
-                data = q.get()
-                if rec.AcceptWaveform(data):
-                    string = rec.Result()
-                    if "\"\"" not in string:
-                        with open("../test.txt", "w") as f:
-                            f.write(string)
-                        subprocess.call("python demo.py --keywords bumblebee", shell=True)
-                        quit()
-                if dump_fn is not None:
-                    dump_fn.write(data)
+        rec = vosk.KaldiRecognizer(model, args.samplerate)
+        # play chime here
+        playsound('../chime.mp3')
+        while True:
+            data = q.get()
+            if rec.AcceptWaveform(data):
+                string = rec.Result()
+                if "\"\"" not in string:
+                    with open("../test.txt", "w") as f:
+                        f.write(string)
+                    subprocess.call("python demo.py --keywords bumblebee", shell=True)
+                    quit()
+            if dump_fn is not None:
+                dump_fn.write(data)
 
 except KeyboardInterrupt:
     print('\nDone')
