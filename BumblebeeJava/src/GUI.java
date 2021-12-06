@@ -8,15 +8,15 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 import javax.swing.UIManager;
+import javax.swing.JTextArea;
 
 public class GUI {
 
 	private JFrame frame;
-	private static JTextField outputField;
-	private static JTextField inputField;
+	private static JTextArea inputField;
+	private static JTextArea outputField;
 
 	/**
 	 * Launch the application.
@@ -92,36 +92,35 @@ public class GUI {
 		frame.getContentPane().setLayout(springLayout);
 		
 		JLabel lblNewLabel = new JLabel("Input:");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 3, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel, 10, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(lblNewLabel);
 		
-		inputField = new JTextField();
-		inputField.setForeground(new Color(255, 255, 255));
-		inputField.setBackground(new Color(0, 0, 0));
-		springLayout.putConstraint(SpringLayout.NORTH, inputField, 0, SpringLayout.NORTH, lblNewLabel);
-		springLayout.putConstraint(SpringLayout.WEST, inputField, 6, SpringLayout.EAST, lblNewLabel);
-		springLayout.putConstraint(SpringLayout.SOUTH, inputField, 77, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, inputField, -10, SpringLayout.EAST, frame.getContentPane());
-		inputField.setEditable(false);
-		frame.getContentPane().add(inputField);
-		inputField.setColumns(10);
-		
 		JLabel lblNewLabel_1 = new JLabel("Output:");
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 112, SpringLayout.SOUTH, lblNewLabel);
-		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel_1, 0, SpringLayout.EAST, lblNewLabel);
+		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel_1, 104, SpringLayout.SOUTH, lblNewLabel);
+		springLayout.putConstraint(SpringLayout.WEST, lblNewLabel_1, 3, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel, 0, SpringLayout.EAST, lblNewLabel_1);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		outputField = new JTextField();
-		outputField.setForeground(new Color(255, 255, 255));
-		outputField.setBackground(new Color(0, 0, 0));
-		springLayout.putConstraint(SpringLayout.NORTH, outputField, 0, SpringLayout.NORTH, lblNewLabel_1);
-		springLayout.putConstraint(SpringLayout.WEST, outputField, 0, SpringLayout.WEST, inputField);
-		springLayout.putConstraint(SpringLayout.SOUTH, outputField, 125, SpringLayout.SOUTH, inputField);
-		springLayout.putConstraint(SpringLayout.EAST, outputField, -17, SpringLayout.EAST, frame.getContentPane());
-		outputField.setEditable(false);
-		frame.getContentPane().add(outputField);
-		outputField.setColumns(10);
-	}
+		JTextArea textArea = new JTextArea();
+		springLayout.putConstraint(SpringLayout.WEST, textArea, 6, SpringLayout.EAST, lblNewLabel);
+		springLayout.putConstraint(SpringLayout.EAST, textArea, -10, SpringLayout.EAST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, textArea);
+		springLayout.putConstraint(SpringLayout.NORTH, textArea, 11, SpringLayout.NORTH, frame.getContentPane());
+		textArea.setWrapStyleWord(true);
+		textArea.setEditable(false);
+		textArea.setForeground(new Color(255, 255, 255));
+		textArea.setBackground(new Color(0, 0, 0));
+		frame.getContentPane().add(textArea);
+		
+		JTextArea textArea_1 = new JTextArea();
+		springLayout.putConstraint(SpringLayout.SOUTH, textArea, -6, SpringLayout.NORTH, textArea_1);
+		textArea_1.setBackground(new Color(0, 0, 0));
+		textArea_1.setForeground(new Color(255, 255, 255));
+		springLayout.putConstraint(SpringLayout.NORTH, textArea_1, 128, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, textArea_1, 6, SpringLayout.EAST, lblNewLabel_1);
+		springLayout.putConstraint(SpringLayout.SOUTH, textArea_1, -24, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, textArea_1, -10, SpringLayout.EAST, frame.getContentPane());
+		frame.getContentPane().add(textArea_1);
+		
 
+	}
 }
