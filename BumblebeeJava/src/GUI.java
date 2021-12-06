@@ -1,28 +1,16 @@
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridBagLayout;
+import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
-import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import java.awt.GridLayout;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import net.miginfocom.swing.MigLayout;
+import javax.swing.JTextField;
 import javax.swing.SpringLayout;
+import javax.swing.UIManager;
 
 public class GUI {
 
