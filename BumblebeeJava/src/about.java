@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class about extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
@@ -21,50 +22,47 @@ public class about extends commandClass implements commandInterface {
         }
 
 		for(int i=j+1; i<input.length; i++) {
-            if (input[i].equals("about")) {
-                return ("the about command gives a brief description of a configured command");
-            }
-            if (input[i].equals("calculator")) {
+            if (Arrays.asList(input).contains("calculator")) {
                 return ("the calculator can perform basic sequential operations between decimal numbers");
             }
-            if (input[i].equals("coin")) {
+            if (Arrays.asList(input).contains("coin")) {
                 return ("performs a coin toss");
             }
-            if (input[i].equals("date")) {
+            if (Arrays.asList(input).contains("coin")) {
                 return ("the date command can get the current date");
             }
-            if (input[i].equals("delete")) {
+            if (Arrays.asList(input).contains("delete")) {
                 return ("the delete command can remove an existing note or list, or any text file in the " +
                         "designated path");
             }
-            if (input[i].equals("joke")) {
+            if (Arrays.asList(input).contains("joke")) {
                 return ("the joke command will tell you a random, preset joke");
             }
-            if (input[i].equals("list")) {
+            if (Arrays.asList(input).contains("list")) {
                 return ("the list command generates a named text file with a list of all mentioned elements");
             }
-            if (input[i].equals("note")) {
+            if (Arrays.asList(input).contains("note")) {
                 return ("the note command generates a named text file with any mentioned phrase");
             }
-            if (input[i].equals("read")) {
+            if (Arrays.asList(input).contains("read")) {
                 return ("the read command can read the contents of a created note or list file, or any" +
                         "text file in the designated path on your machine");
             }
-            if (input[i].equals("search")) {
-            	return ("the google command allows you to perform a google search and returns the top result");
+            if (Arrays.asList(input).contains("search")) {
+            	return ("the search command allows you to perform a search via the internet and returns the top result");
             }
-            if (input[i].equals("syntax")) {
+            if (Arrays.asList(input).contains("syntax")) {
                 return ("the syntax command returns the required syntax for any command");
             }
-            if (input[i].equals("time")) {
+            if (Arrays.asList(input).contains("time")) {
                 return ("the time command can be used to get the current local time, or the the current time" +
                         "in any time zone");
             }
-            if (input[i].equals("weather")) {
+            if (Arrays.asList(input).contains("weather")) {
                 return ("the weather command returns the weather in a city you ask for");
             }
-            else {
-            	return ("i am your personal voice assistant designed to work offline. you can call me bumblebee");
+            else{
+            	return ("i am your personal voice assistant designed to work primarily offline");
             }
         }
         return "Failed to complete command";
