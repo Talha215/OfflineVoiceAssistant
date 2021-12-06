@@ -1,17 +1,18 @@
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineListener;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
-/**
- * 
- */
-
-/**
- * @author Ian Zichko-Geithner
- *
- */
 public class timer extends commandClass implements commandInterface {
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 	StringToMath stringToMath = new StringToMath();
@@ -86,9 +87,49 @@ public class timer extends commandClass implements commandInterface {
 
 	}
 	class reminder extends TimerTask {
-		public void run() {
-			timerTextToSpeech.setVoice("dfki-poppy-hsmm");
-			timerTextToSpeech.speak("BEEP BEEP BEEP BEEP BEEP BEEP BEEP BEEP", 1.5f, false, true);
+		public void run() {						
+			boolean playCompleted = false;
+	        File audioFile = new File("timer.wav");
+	        
+	        try {
+	            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+	 
+	            AudioFormat format = audioStream.getFormat();
+	 
+	            DataLine.Info info = new DataLine.Info(Clip.class, format);
+	 
+	            Clip audioClip = (Clip) AudioSystem.getLine(info);
+	 
+	            audioClip.addLineListener(null);
+	 
+	            audioClip.open(audioStream);
+	             
+	            audioClip.start();
+	             
+	            while (!playCompleted) {
+	                // wait for the playback completes
+	                try {
+	                    Thread.sleep(1000);
+	                } catch (InterruptedException ex) {
+	                    ex.printStackTrace();
+	                }
+	            }
+	            
+	            audioClip.close();
+	             
+	        } catch (UnsupportedAudioFileException ex) {
+	            System.out.println("The specified audio file is not supported.");
+	            ex.printStackTrace();
+	        } catch (LineUnavailableException ex) {
+	            System.out.println("Audio line for playing back is unavailable.");
+	            ex.printStackTrace();
+	        } catch (IOException ex) {
+	            System.out.println("Error playing the audio file.");
+	            ex.printStackTrace();
+	        }
+	        
+	        timerTextToSpeech.setVoice("dfki-poppy-hsmm");
+			timerTextToSpeech.speak("Timer Completed", 1.5f, false, true);
 			timer.cancel();
 		}
 	}
