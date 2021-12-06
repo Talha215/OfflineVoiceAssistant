@@ -79,43 +79,4 @@ public class stateMachine {
 		return toSpeak;
 	}
 
-	public static void main(String[] args) throws InterruptedException, IOException {
-		//Process p = Runtime.getRuntime().exec("cmd.exe /c start python test.py");
-		
-		while(true) {	
-			Scanner input = new Scanner(System.in);
-			String output = null;
-
-			do {
-				try {
-					input = new Scanner(new BufferedReader(new FileReader("test.txt")));
-					
-					output = "";
-					while(input.hasNext()) {
-						output += input.nextLine() + '\n';
-					}
-					input.close();
-					File toDelete = new File("test.txt");
-					toDelete.delete();
-					
-					//string manipulation of output	
-					output = output.substring(14, output.lastIndexOf('\"'));
-					System.out.println("input: " + output);
-					
-				} catch(FileNotFoundException e ) {
-					Thread.sleep(1000);
-				}
-			} while(output == null);
-			
-			stateMachine run;
-			try {
-				run = new stateMachine(output);
-				stateMachine.textToSpeech.setVoice("dfki-poppy-hsmm");
-				stateMachine.textToSpeech.speak(run.outPut(run.match()), 1.5f, false, true);
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
 }
