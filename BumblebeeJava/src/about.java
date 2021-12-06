@@ -28,7 +28,7 @@ public class about extends commandClass implements commandInterface {
             if (Arrays.asList(input).contains("coin")) {
                 return ("performs a coin toss");
             }
-            if (Arrays.asList(input).contains("coin")) {
+            if (Arrays.asList(input).contains("date")) {
                 return ("the date command can get the current date");
             }
             if (Arrays.asList(input).contains("delete")) {
