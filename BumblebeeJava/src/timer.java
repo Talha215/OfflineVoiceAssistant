@@ -43,10 +43,10 @@ public class timer extends commandClass implements commandInterface {
 			else if(command[i].equals("minutes") || command[i].equals("minute")) {
 				fullCommand+="times sixty ";
 				if(i>=1) {
-					returnTime+= command[i-1] + command[i] + " ";
+					returnTime+= command[i-1] + " " + command[i] + " ";
 				}
 				else {
-					returnTime+= command[i-1] + command[i] + " ";
+					returnTime+= command[i-1] + " " + command[i] + " ";
 				}
 			}
 			else if(command[i].equals("hour") || command[i].equals("hours")) {
@@ -57,19 +57,19 @@ public class timer extends commandClass implements commandInterface {
 					fullCommand+="times sixty times sixty ";
 				}
 				if(i>=1) {
-					returnTime+= command[i-1] + command[i] + " ";
+					returnTime+= command[i-1] + " " + command[i] + " ";
 				}
 				else {
-					returnTime+= command[i-1] + command[i] + " ";
+					returnTime+= command[i-1] + " " + command[i] + " ";
 				}
 			}
 			else if(command[i].equals("seconds") || command[i].equals("second")) {
 				fullCommand+=" ";
 				if(i>=1) {
-					returnTime+= command[i-1] + command[i] + " ";
+					returnTime+= command[i-1] + " " + command[i] + " ";
 				}
 				else {
-					returnTime+= command[i-1] + command[i] + " ";
+					returnTime+= command[i-1] + " " + command[i] + " ";
 				}
 			}
 			else {
@@ -114,8 +114,10 @@ public class timer extends commandClass implements commandInterface {
 	                    ex.printStackTrace();
 	                }
 	            }
-	            
 	            audioClip.close();
+	            timerTextToSpeech.setVoice("dfki-poppy-hsmm");
+				timerTextToSpeech.speak("Timer Completed", 1.5f, false, true);
+				timer.cancel();
 	             
 	        } catch (UnsupportedAudioFileException ex) {
 	            System.out.println("The specified audio file is not supported.");
@@ -127,10 +129,7 @@ public class timer extends commandClass implements commandInterface {
 	            System.out.println("Error playing the audio file.");
 	            ex.printStackTrace();
 	        }
-	        
-	        timerTextToSpeech.setVoice("dfki-poppy-hsmm");
-			timerTextToSpeech.speak("Timer Completed", 1.5f, false, true);
-			timer.cancel();
+	       
 		}
 	}
 }

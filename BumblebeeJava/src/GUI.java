@@ -15,8 +15,8 @@ import javax.swing.JTextArea;
 public class GUI {
 
 	private JFrame frame;
-	private static JTextArea inputField;
-	private static JTextArea outputField;
+	private static JTextArea inputField = new JTextArea();
+	private static JTextArea outputField = new JTextArea();
 
 	/**
 	 * Launch the application.
@@ -100,26 +100,27 @@ public class GUI {
 		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel, 0, SpringLayout.EAST, lblNewLabel_1);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		JTextArea textArea = new JTextArea();
-		springLayout.putConstraint(SpringLayout.WEST, textArea, 6, SpringLayout.EAST, lblNewLabel);
-		springLayout.putConstraint(SpringLayout.EAST, textArea, -10, SpringLayout.EAST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, textArea);
-		springLayout.putConstraint(SpringLayout.NORTH, textArea, 11, SpringLayout.NORTH, frame.getContentPane());
-		textArea.setWrapStyleWord(true);
-		textArea.setEditable(false);
-		textArea.setForeground(new Color(255, 255, 255));
-		textArea.setBackground(new Color(0, 0, 0));
-		frame.getContentPane().add(textArea);
+		inputField.setLineWrap(true);
+		springLayout.putConstraint(SpringLayout.WEST, inputField, 6, SpringLayout.EAST, lblNewLabel);
+		springLayout.putConstraint(SpringLayout.EAST, inputField, -10, SpringLayout.EAST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 0, SpringLayout.NORTH, inputField);
+		springLayout.putConstraint(SpringLayout.NORTH, inputField, 11, SpringLayout.NORTH, frame.getContentPane());
+		inputField.setWrapStyleWord(true);
+		inputField.setEditable(false);
+		inputField.setForeground(new Color(255, 255, 255));
+		inputField.setBackground(new Color(0, 0, 0));
+		frame.getContentPane().add(inputField);
 		
-		JTextArea textArea_1 = new JTextArea();
-		springLayout.putConstraint(SpringLayout.SOUTH, textArea, -6, SpringLayout.NORTH, textArea_1);
-		textArea_1.setBackground(new Color(0, 0, 0));
-		textArea_1.setForeground(new Color(255, 255, 255));
-		springLayout.putConstraint(SpringLayout.NORTH, textArea_1, 128, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.WEST, textArea_1, 6, SpringLayout.EAST, lblNewLabel_1);
-		springLayout.putConstraint(SpringLayout.SOUTH, textArea_1, -24, SpringLayout.SOUTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, textArea_1, -10, SpringLayout.EAST, frame.getContentPane());
-		frame.getContentPane().add(textArea_1);
+		outputField.setWrapStyleWord(true);
+		outputField.setLineWrap(true);
+		springLayout.putConstraint(SpringLayout.SOUTH, inputField, -6, SpringLayout.NORTH, outputField);
+		outputField.setBackground(new Color(0, 0, 0));
+		outputField.setForeground(new Color(255, 255, 255));
+		springLayout.putConstraint(SpringLayout.NORTH, outputField, 128, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.WEST, outputField, 6, SpringLayout.EAST, lblNewLabel_1);
+		springLayout.putConstraint(SpringLayout.SOUTH, outputField, -24, SpringLayout.SOUTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, outputField, -10, SpringLayout.EAST, frame.getContentPane());
+		frame.getContentPane().add(outputField);
 		
 
 	}
