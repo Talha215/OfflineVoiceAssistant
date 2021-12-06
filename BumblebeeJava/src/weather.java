@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.http.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.CompletionException;
 
 public class weather extends commandClass implements commandInterface{
     ArrayList<String> commandPhrases = new ArrayList<>();
@@ -29,13 +30,21 @@ public class weather extends commandClass implements commandInterface{
 
         String str =  String.join(" ", Arrays.copyOfRange(input, ++start, input.length));
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(urlCity + str + "&appid=" + apiKey + units)).build();
-        return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenApply(HttpResponse::body)
-                .thenApply(weather::parse)
-                .join();
-
+        str = str.replaceAll(" ", "%20");
+        
+        try {
+	        HttpClient client = HttpClient.newHttpClient();
+	        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(urlCity + str + "&appid=" + apiKey + units)).build();
+	        return client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+	                .thenApply(HttpResponse::body)
+	                .thenApply(weather::parse)
+	                .join();
+        } catch(CompletionException e) {
+        	str = str.replaceAll("%20", " ");
+        	if(!Arrays.asList(input).contains("in"))
+        		return "Invalid syntax. Please try again or consult the syntax command.";
+        	return str + " was not found.";
+        }
 
     }
 

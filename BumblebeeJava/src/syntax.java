@@ -38,9 +38,9 @@ public class syntax extends commandClass implements commandInterface {
             if (input[i].equals("delete")) {
                 return ("to delete a file, say delete followed by the file name, void of the dot t x t");
             }
-            if (input[i].equals("google")) {
-                return ("to use the google feature, say google followed by the exact phrase you would like" +
-                        "entered to the google search bar");
+            if (input[i].equals("search")) {
+                return ("to use the search feature, say search followed by the exact phrase you would like" +
+                        "entered to the secured search bar");
             }
             if (input[i].equals("joke")) {
                 return ("to hear a joke, just say tell me a joke");
@@ -68,8 +68,7 @@ public class syntax extends commandClass implements commandInterface {
                         "and the name of the timezone");
             }
             if (input[i].equals("weather")) {
-                return ("to get the current weather, you can say what is the weather right now or simply " +
-                        "say weather alone");
+                return ("to get the current weather, you can say what is the weather in followed by any city");
             }
             }
 		return "Whoops";
