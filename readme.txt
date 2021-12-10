@@ -10,6 +10,7 @@ JAVA:
 	JSoup: https://jsoup.org/packages/jsoup-1.14.3.jar
 	MaryTTS: https://github.com/marytts/marytts/releases/download/v5.2/marytts-5.2.zip 
 		(use marytts-runtime-5.2-jar-with-dependencies.jar, marytts-lang-en-5.2.jar, and voice-dfki-poppy-hsmm-5.2.jar)
+		(voice-dfki-poppy-hsmm-5.2.jar isn't available online, so it is uploaded to the project root)
 4- Run the GUI.java's main method in the IDE. No arguments are required.
 5- There will be no output until the Python side starts running.
 
