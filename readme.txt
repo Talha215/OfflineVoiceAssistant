@@ -1,3 +1,5 @@
+VIDEO OF PROJECT WORKING: https://youtu.be/9lMLbez3uCY
+
 While it may be possible to run the files on a command line, we had our best results running it in our IDEs for both Java and Python.
 
 JAVA:
