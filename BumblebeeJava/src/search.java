@@ -5,7 +5,10 @@ import java.net.UnknownHostException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-
+/**
+ * @author Ian Zichko-Geithner
+ *
+ */
 public class search extends commandClass implements command{
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 

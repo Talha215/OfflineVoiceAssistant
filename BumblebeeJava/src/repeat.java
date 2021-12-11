@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/**
+ * @author Ian Zichko-Geithner
+ *
+ */
 public class repeat extends commandClass{
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 	

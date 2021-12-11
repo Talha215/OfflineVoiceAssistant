@@ -1,7 +1,10 @@
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;
-
+/**
+ * @author Ian Zichko-Geithner and Talha Qureshi
+ *
+ */
 public class stateMachine {
 	//Data members
 	ArrayList<Object> commandClassesList = new ArrayList<Object>();

@@ -11,7 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.SpringLayout;
 import javax.swing.UIManager;
 import javax.swing.JTextArea;
-
+/**
+ * @author Ian Zichko-Geithner
+ *
+ */
 public class GUI {
 
 	private JFrame frame;
@@ -26,6 +29,7 @@ public class GUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					Process vosk = Runtime.getRuntime().exec("python anotherdemo.py");
 					GUI window = new GUI();
 					window.frame.setVisible(true);
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

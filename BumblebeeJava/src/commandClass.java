@@ -1,4 +1,7 @@
-
+/**
+ * @author Ian Zichko-Geithner
+ *
+ */
 public class commandClass implements commandInterface{
 
 	@Override

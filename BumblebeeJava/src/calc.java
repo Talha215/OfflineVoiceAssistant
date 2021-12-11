@@ -1,31 +1,34 @@
 import java.util.Stack;
-
+/**
+ * @author Ian Zichko-Geithner
+ *
+ */
 public class calc {
-	static String input;
-	static String outPut;
+	static String words;
+	static String numbers;
 	/**
 	 * Constructor
 	 */
 	calc(){
-		this.input = "";
-		this.outPut = " ";
+		this.words = "";
+		this.numbers = " ";
 	}
 	
 	/**
-	 * dijkstra's two stack algorithm used to convert string and calculate then return string
+	 * dijkstra's two stack algorithm used to calculate string math equations
 	 * @param in
 	 * @return outPut 
 	 *
 	 */
 	public static String calculate(String in) {
-		 input=in;
-         String exp[] = input.split(" ");
+		 words=in;
+         String exp[] = words.split(" ");
          Stack<String> ops = new Stack<String>();
          Stack<Double> vals = new Stack<Double>();
 
          for(int i = exp.length-1; i >=0 ; i--) {
-        	 	 //iterates through string and checks each token in the string math expression
         	 	 //Checks for operators to push into operator stack, and values to push into value stack.
+        	 	 //iterates through string and checks each token in the string math expression
                  String current = exp[i];
                  if (current.equals(")") || current.equals("")) {
                  }
@@ -43,11 +46,11 @@ public class calc {
          for(int i =ops.size()-1;i>=0;i--) {
         	 getComp(ops, vals);
          }
-         outPut = vals.pop().toString();
+         numbers = vals.pop().toString();
          // If the number is xx.0 remove the .0 for cleaner audio.
-         if(outPut.charAt(outPut.length()-1)=='0' && outPut.charAt(outPut.length()-2)=='.')
-        	 outPut = outPut.substring(0, outPut.length()-2);
-		return outPut;
+         if(numbers.charAt(numbers.length()-1)=='0' && numbers.charAt(numbers.length()-2)=='.')
+        	 numbers = numbers.substring(0, numbers.length()-2);
+		return numbers;
 	}
 	
 	/**

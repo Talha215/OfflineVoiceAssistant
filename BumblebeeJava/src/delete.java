@@ -1,6 +1,9 @@
 import java.io.File;
 import java.util.ArrayList;
-
+/**
+ * @author Kathleen Snyder
+ *
+ */
 public class delete extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 

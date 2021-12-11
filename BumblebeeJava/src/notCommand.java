@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/**
+ * @author Talha Qureshi
+ *
+ */
 public class notCommand extends commandClass{
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 	

@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-
+/**
+ * @author Kathleen Snyder
+ *
+ */
 public class about extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 

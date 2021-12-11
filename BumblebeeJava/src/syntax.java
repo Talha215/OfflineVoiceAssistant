@@ -1,5 +1,8 @@
 import java.util.ArrayList;
-
+/**
+ * @author Kathleen Snyder
+ *
+ */
 public class syntax extends commandClass implements commandInterface {
     ArrayList<String> commandPhrases = new ArrayList<String>();
 

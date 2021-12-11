@@ -5,7 +5,10 @@ import java.net.http.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.CompletionException;
-
+/**
+ * @author Kyle Reddy
+ *
+ */
 public class weather extends commandClass implements commandInterface{
     ArrayList<String> commandPhrases = new ArrayList<>();
 

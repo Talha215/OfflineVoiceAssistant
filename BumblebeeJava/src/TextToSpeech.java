@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.util.Collection;
 import java.util.logging.Level;
@@ -18,15 +16,15 @@ import marytts.modules.synthesis.Voice;
  */
 public class TextToSpeech {
 
-	private AudioPlayer		tts;
-	private MaryInterface	marytts;
+	private AudioPlayer		texttospeech;
+	private MaryInterface	mary;
 
 	/**
 	 * Constructor
 	 */
 	public TextToSpeech() {
 		try {
-			marytts = new LocalMaryInterface();
+			mary = new LocalMaryInterface();
 
 		} catch (MaryConfigurationException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
@@ -34,20 +32,21 @@ public class TextToSpeech {
 	}
 
 	/**
+	 * Sets voice for MaryTTs, we used poppy exclusively due to sound quality
+	 * of other voices available.
+	 * @param voice
+	 */
+	public void setVoice(String voice) {
+		mary.setVoice(voice);
+	}
+
+	/**
 	 * Gives full list of possible voices in marytts
-	 * Decided not to implement voice selection
+	 * Decided not to implement voice selection due to time constraint.
 	 * @return The available voices for MaryTTS
 	 */
 	public Collection<Voice> getAvailableVoices() {
 		return Voice.getAvailableVoices();
-	}
-
-	/**
-	 * Sets voice for MaryTTs
-	 * @param voice
-	 */
-	public void setVoice(String voice) {
-		marytts.setVoice(voice);
 	}
 
 	/**
@@ -61,15 +60,15 @@ public class TextToSpeech {
 
 		stopSpeaking();
 
-		try (AudioInputStream audio = marytts.generateAudio(words)) {
+		try (AudioInputStream audio = mary.generateAudio(words)) {
 
-			tts = new AudioPlayer();
-			tts.setAudio(audio);
-			tts.setGain(gain);
-			tts.setDaemon(daemon);
-			tts.start();
+			texttospeech = new AudioPlayer();
+			texttospeech.setAudio(audio);
+			texttospeech.setGain(gain);
+			texttospeech.setDaemon(daemon);
+			texttospeech.start();
 			if (join)
-				tts.join();
+				texttospeech.join();
 
 		} catch (SynthesisException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Error", ex);
@@ -77,16 +76,16 @@ public class TextToSpeech {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, "IO Exception", ex);
 		} catch (InterruptedException ex) {
 			Logger.getLogger(getClass().getName()).log(Level.WARNING, "Interrupted ", ex);
-			tts.interrupt();
+			texttospeech.interrupt();
 		}
 	}
 
 	/**
-	 * Stop speech out put
+	 * Stop speech out put if needed
 	 */
 	public void stopSpeaking() {
-		if (tts != null)
-			tts.cancel();
+		if (texttospeech != null)
+			texttospeech.cancel();
 	}
 
 }

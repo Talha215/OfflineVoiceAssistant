@@ -14,22 +14,32 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import marytts.util.data.audio.MonoAudioInputStream;
 import marytts.util.data.audio.StereoAudioInputStream;
-
+/**
+ * @author Ian Zichko-Geithner
+ *
+ */
 public class AudioPlayer extends Thread {
 
-	//MaryTTS settings taken from a tutorial
+	//MaryTTS settings
 	public static final int	MONO = 0;
-	public static final int	STEREO = 3;
-	public static final int	LEFT_ONLY = 1;
 	public static final int	RIGHT_ONLY = 2;
-	private AudioInputStream inStream;
+	public static final int	LEFT_ONLY = 1;
+	public static final int	STEREO = 3;
+	
+	private float gain = 1.0f;
 	private LineListener listener;
 	private SourceDataLine sourceLine;
-	private int outputMode;
+	private int Mode;
+	private AudioInputStream Stream;
 	private Status status = Status.WAITING;
 	private boolean	exitRequested = false;
-	private float gain = 1.0f;
 
+	/**
+	 * AudioPlayer can be used if setAudio() is used
+	 *
+	 */
+	public AudioPlayer() {
+	}
 	/**
 	 * Reports status of the audio thread
 	 *
@@ -40,26 +50,19 @@ public class AudioPlayer extends Thread {
 	}
 
 	/**
-	 * AudioPlayer can be used if setAudio() is used
-	 *
-	 */
-	public AudioPlayer() {
-	}
-
-	/**
 	 * @param file
 	 * @throws IOException
 	 * @throws UnsupportedAudioFileException
 	 */
 	public AudioPlayer(File file) throws IOException, UnsupportedAudioFileException {
-		this.inStream = AudioSystem.getAudioInputStream(file);
+		this.Stream = AudioSystem.getAudioInputStream(file);
 	}
 
 	/**
 	 * @param inStream
 	 */
 	public AudioPlayer(AudioInputStream inStream) {
-		this.inStream = inStream;
+		this.Stream = inStream;
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class AudioPlayer extends Thread {
 	 * @throws UnsupportedAudioFileException
 	 */
 	public AudioPlayer(File file, LineListener listener) throws IOException, UnsupportedAudioFileException {
-		this.inStream = AudioSystem.getAudioInputStream(file);
+		this.Stream = AudioSystem.getAudioInputStream(file);
 		this.listener = listener;
 	}
 
@@ -78,7 +81,7 @@ public class AudioPlayer extends Thread {
 	 * @param listener
 	 */
 	public AudioPlayer(AudioInputStream inStream, LineListener listener) {
-		this.inStream = inStream;
+		this.Stream = inStream;
 		this.listener = listener;
 	}
 
@@ -91,7 +94,7 @@ public class AudioPlayer extends Thread {
 	 */
 	public AudioPlayer(File file, SourceDataLine line, LineListener listener)
 			throws IOException, UnsupportedAudioFileException {
-		this.inStream = AudioSystem.getAudioInputStream(file);
+		this.Stream = AudioSystem.getAudioInputStream(file);
 		this.sourceLine = line;
 		this.listener = listener;
 	}
@@ -102,7 +105,7 @@ public class AudioPlayer extends Thread {
 	 * @param listener
 	 */
 	public AudioPlayer(AudioInputStream inStream, SourceDataLine line, LineListener listener) {
-		this.inStream = inStream;
+		this.Stream = inStream;
 		this.sourceLine = line;
 		this.listener = listener;
 	}
@@ -113,19 +116,15 @@ public class AudioPlayer extends Thread {
 	 * @param line
 	 * @param listener
 	 * @param mode
-	 * MONO has mono output 
-	 * STEREO has stereo output
-	 * LEFT_ONLY has mono output on left channel
-	 * RIGHT_ONLY has mono output on the right channel
 	 * @throws IOException
 	 * @throws UnsupportedAudioFileException
 	 */
 	public AudioPlayer(File file, SourceDataLine line, LineListener listener, int mode)
 			throws IOException, UnsupportedAudioFileException {
-		this.inStream = AudioSystem.getAudioInputStream(file);
+		this.Stream = AudioSystem.getAudioInputStream(file);
 		this.sourceLine = line;
 		this.listener = listener;
-		this.outputMode = mode;
+		this.Mode = mode;
 	}
 
 	/**
@@ -140,10 +139,10 @@ public class AudioPlayer extends Thread {
 	 * RIGHT_ONLY has mono output on the right channel
 	 */
 	public AudioPlayer(AudioInputStream inStream, SourceDataLine line, LineListener listener, int mode) {
-		this.inStream = inStream;
+		this.Stream = inStream;
 		this.sourceLine = line;
 		this.listener = listener;
-		this.outputMode = mode;
+		this.Mode = mode;
 	}
 
 	/**
@@ -153,7 +152,7 @@ public class AudioPlayer extends Thread {
 		if (status == Status.PLAYING) {
 			throw new IllegalStateException("Audio already playing");
 		}
-		this.inStream = audio;
+		this.Stream = audio;
 	}
 
 	/**
@@ -200,20 +199,20 @@ public class AudioPlayer extends Thread {
 	public void run() {
 
 		status = Status.PLAYING;
-		AudioFormat audioFormat = inStream.getFormat();
+		AudioFormat audioFormat = Stream.getFormat();
 		if (audioFormat.getChannels() == 1) {
-			if (outputMode != 0) {
-				inStream = new StereoAudioInputStream(inStream, outputMode);
-				audioFormat = inStream.getFormat();
+			if (Mode != 0) {
+				Stream = new StereoAudioInputStream(Stream, Mode);
+				audioFormat = Stream.getFormat();
 			}
 		} else {
 			assert audioFormat.getChannels() == 2 : "Unexpected number of channels: " + audioFormat.getChannels();
-			if (outputMode == 0) {
-				inStream = new MonoAudioInputStream(inStream);
-			} else if (outputMode == 1 || outputMode == 2) {
-				inStream = new StereoAudioInputStream(inStream, outputMode);
+			if (Mode == 0) {
+				Stream = new MonoAudioInputStream(Stream);
+			} else if (Mode == 1 || Mode == 2) {
+				Stream = new StereoAudioInputStream(Stream, Mode);
 			} else {
-				assert outputMode == 3 : "Unexpected output mode: " + outputMode;
+				assert Mode == 3 : "Unexpected output mode: " + Mode;
 			}
 		}
 
@@ -230,8 +229,8 @@ public class AudioPlayer extends Thread {
 							sourceFormat.getChannels() * (sourceFormat.getSampleSizeInBits() / 8),
 							sourceFormat.getSampleRate(), sourceFormat.isBigEndian());
 
-					inStream = AudioSystem.getAudioInputStream(targetFormat, inStream);
-					audioFormat = inStream.getFormat();
+					Stream = AudioSystem.getAudioInputStream(targetFormat, Stream);
+					audioFormat = Stream.getFormat();
 				}
 				info = new DataLine.Info(SourceDataLine.class, audioFormat);
 				sourceLine = (SourceDataLine) AudioSystem.getLine(info);
@@ -251,7 +250,7 @@ public class AudioPlayer extends Thread {
 		byte[] abData = new byte[65532];
 		while ((nRead != -1) && (!exitRequested)) {
 			try {
-				nRead = inStream.read(abData, 0, abData.length);
+				nRead = Stream.read(abData, 0, abData.length);
 			} catch (IOException ex) {
 				Logger.getLogger(getClass().getName()).log(Level.WARNING, null, ex);
 			}

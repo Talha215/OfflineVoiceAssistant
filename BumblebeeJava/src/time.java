@@ -6,7 +6,10 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import com.ibm.icu.util.Calendar;
-
+/**
+ * @author Kathleen Snyder
+ *
+ */
 public class time extends commandClass implements commandInterface {
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 	

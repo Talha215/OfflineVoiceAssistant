@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 
 /**
  * @author Ian Zichko-Geithner
@@ -11,7 +7,8 @@ public class StringToMath {
 	private static String outPut = "";
 	
 	/**
-	 * Takes a string that is the words of a math expression then converts it into a string of numbers and operators to represent that expression.
+	 * Takes a string that is the words of a math expression then converts it into a string of numbers and operators to represent that expression
+	 * for calculation using the calc class.
 	 * @param words
 	 *@return outPut
 	 */
@@ -510,7 +507,6 @@ public class StringToMath {
 		}
 		String saved = outPut;
 		outPut = "";
-		//comment
 		return saved;
 		
 	}

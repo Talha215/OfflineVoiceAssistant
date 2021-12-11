@@ -12,7 +12,10 @@ import javax.sound.sampled.DataLine;
 import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
+/**
+ * @author Ian Zichko-Geithner
+ *
+ */
 public class timer extends commandClass implements commandInterface {
 	ArrayList<String> commandPhrases = new ArrayList<String>();
 	StringToMath stringToMath = new StringToMath();
@@ -117,7 +120,7 @@ public class timer extends commandClass implements commandInterface {
 	            audioClip.close();
 	            timerTextToSpeech.setVoice("dfki-poppy-hsmm");
 				timerTextToSpeech.speak("Timer Completed", 1.5f, false, true);
-				timer.cancel();
+				
 	             
 	        } catch (UnsupportedAudioFileException ex) {
 	            System.out.println("The specified audio file is not supported.");
@@ -129,6 +132,7 @@ public class timer extends commandClass implements commandInterface {
 	            System.out.println("Error playing the audio file.");
 	            ex.printStackTrace();
 	        }
+	        timer.cancel();
 	       
 		}
 	}
